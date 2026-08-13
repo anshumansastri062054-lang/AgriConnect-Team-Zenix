@@ -1,4 +1,4 @@
-const API = "http://localhost:4000/api";
+const API = "https://agri-connect-team-zenix-azwk.vercel.app/api";
 
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
