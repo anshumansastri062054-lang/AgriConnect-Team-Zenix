@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgriConnect — Land to Market Digital Agriculture Ecosystem" />
+  <meta name="theme-color" content="#1f7a4c" />
+  <title>AgriConnect — Team Zenix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Odia:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" onclick="showPage('home')"><span class="brand-mark">🌾</span><span>AgriConnect<small>Team Zenix</small></span></a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#home" onclick="showPage('home')">Home</a>
+      <a href="#land" onclick="showPage('land')">Land</a>
+      <a href="#tools" onclick="showPage('tools')">Tools</a>
+      <a href="#soil" onclick="showPage('soil')">Soil & Crop</a>
+      <a href="#procurement" onclick="showPage('procurement')">Procurement</a>
+      <a href="#history" onclick="showPage('history')">History</a>
+      <a href="#mitra" onclick="showPage('mitra')">Digital Mitra</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" onclick="toggleEasyMode()" aria-label="Toggle easy mode">Aa</button>
+      <button class="voice-btn" onclick="startVoice()">🎙️ <span>Voice</span></button>
+      <button class="profile-btn" onclick="showPage('login')">🪪 Login</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">FARMER-FIRST • DEMO READY • INDIA</span>
+          <h1>From <span>Land</span> to Market, one digital agriculture ecosystem.</h1>
+          <p>Connect land, soil intelligence, equipment, cultivation, government procurement, digital tokens, payment tracking and traceability in one simple journey.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" onclick="showPage('login')">Start Agriculture Journey →</button>
+            <button class="secondary-btn" onclick="showPage('how')">See How It Works</button>
+          </div>
+          <div class="trust-row"><span>✓ Farmer-friendly</span><span>✓ Multilingual</span><span>✓ Integration-ready</span></div>
+        </div>
+        <div class="journey-card">
+          <div class="journey-head"><span>YOUR AGRICULTURE JOURNEY</span><span class="live-dot">● DEMO</span></div>
+          <div class="journey">
+            <div>🏞️<b>LAND</b></div><i>→</i><div>🧪<b>SOIL</b></div><i>→</i><div>🌱<b>CROP</b></div><i>→</i><div>🚜<b>TOOLS</b></div>
+            <div>🌾<b>HARVEST</b></div><i>→</i><div>🏛️<b>SELL</b></div><i>→</i><div>🎫<b>TOKEN</b></div><i>→</i><div>💰<b>PAYMENT</b></div>
+          </div>
+          <button class="wide-btn" onclick="runDemo()">▶ Run Complete Farmer Journey</button>
+        </div>
+      </div>
+
+      <div class="section-head"><div><span class="eyebrow">ONE PLATFORM</span><h2>Everything connected, not four separate features.</h2></div></div>
+      <div class="feature-grid">
+        <article class="feature-card green" onclick="showPage('land')"><span>🏞️</span><h3>Land Renting</h3><p>Discover verified farmland with soil, irrigation, price and suitability information.</p><b>Explore land →</b></article>
+        <article class="feature-card brown" onclick="showPage('soil')"><span>🧪</span><h3>Land Health Card</h3><p>Understand pH, NPK, moisture and get explainable crop recommendations.</p><b>Open soil intelligence →</b></article>
+        <article class="feature-card orange" onclick="showPage('tools')"><span>🚜</span><h3>Tool Renting</h3><p>Book tractors and agricultural equipment without overlapping bookings.</p><b>Find equipment →</b></article>
+        <article class="feature-card purple" onclick="showPage('procurement')"><span>🎫</span><h3>Procurement Token</h3><p>Turn a verified procurement transaction into a secure QR-verifiable digital record.</p><b>Verify a token →</b></article>
+      </div>
+
+      <div class="impact-band">
+        <div><strong>01</strong><span>Connected farmer journey</span></div>
+        <div><strong>02</strong><span>Digital Mitra assisted onboarding</span></div>
+        <div><strong>03</strong><span>Explainable recommendations</span></div>
+        <div><strong>04</strong><span>QR traceability</span></div>
+        <div><strong>05</strong><span>Voice + icon-first UX</span></div>
+      </div>
+    </section>
+
+    <section id="login" class="page">
+      <div class="auth-shell">
+        <div class="auth-illustration"><span>🌾</span><h1>Welcome to AgriConnect</h1><p>Simple digital agriculture services for every farmer.</p><div class="language-pills"><button onclick="setLanguage('English')">English</button><button onclick="setLanguage('हिन्दी')">हिन्दी</button><button onclick="setLanguage('ଓଡ଼ିଆ')">ଓଡ଼ିଆ</button></div></div>
+        <div class="auth-card">
+          <span class="eyebrow">FARMER LOGIN</span><h2>Choose how you want to enter</h2>
+          <div class="login-options">
+            <button onclick="demoLogin('Farmer ID')"><span>🌾</span><div><b>Login with Farmer ID</b><small>Use your official farmer identifier</small></div><em>→</em></button>
+            <button onclick="demoLogin('Mobile OTP')"><span>📱</span><div><b>Login with Mobile OTP</b><small>Quick and familiar</small></div><em>→</em></button>
+            <button onclick="demoLogin('Aadhaar')"><span>🪪</span><div><b>Login with Aadhaar</b><small>Authorized integration-ready flow</small></div><em>→</em></button>
+            <button onclick="startVoice()"><span>🎙️</span><div><b>Voice Assistance</b><small>Speak your preferred language</small></div><em>→</em></button>
+          </div>
+          <div class="demo-note">DEMO ONLY — No real Aadhaar data is processed. Demo OTP: <b>123456</b></div>
+          <button class="help-btn" onclick="showPage('mitra')">👨‍🌾 Get help from a Digital Mitra</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="page">
+      <div class="dashboard-head"><div><span class="eyebrow">FARMER DASHBOARD</span><h1>Good morning, Ramesh 👋</h1><p>Here is your agriculture journey today.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary-btn" onclick="showPage('notifications')">🔔 Updates</button><button class="secondary-btn" onclick="showPage('cultivation')">🌾 Cultivation</button><button class="secondary-btn" onclick="runDemo()">▶ Complete Demo</button></div></div>
+      <div class="stats-grid">
+        <div class="stat-card"><span>🏞️</span><b>2</b><small>My Land</small></div><div class="stat-card"><span>🚜</span><b>1</b><small>Tool Booking</small></div><div class="stat-card"><span>🧪</span><b>2</b><small>Soil Cards</small></div><div class="stat-card"><span>🎫</span><b>4</b><small>Crop Tokens</small></div><div class="stat-card"><span>💰</span><b>₹42,600</b><small>Payments</small></div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="panel journey-panel"><div class="panel-title"><h2>Your Agriculture Journey</h2><span class="status-chip">● LIVE DEMO</span></div><div class="timeline">
+          <div class="done"><i>✓</i><div><b>Identity verified</b><small>Farmer ID • Today</small></div></div>
+          <div class="done"><i>✓</i><div><b>Land registered</b><small>2.4 acres • Ganjam</small></div></div>
+          <div class="done"><i>✓</i><div><b>Soil profile created</b><small>pH 6.7 • Loamy</small></div></div>
+          <div class="done"><i>✓</i><div><b>Crop recommended</b><small>Paddy • 94% compatibility</small></div></div>
+          <div class="done"><i>✓</i><div><b>Tractor booked</b><small>Mahindra • 4 hours</small></div></div>
+          <div class="current"><i>6</i><div><b>Harvest & procurement</b><small>Next step</small></div></div>
+          <div><i>7</i><div><b>Digital token</b><small>Waiting for procurement</small></div></div>
+          <div><i>8</i><div><b>Payment</b><small>Traceable transaction</small></div></div>
+        </div></div>
+        <div class="panel score-panel"><div class="panel-title"><h2>Reliability Score</h2><span class="info">i</span></div><div class="score-ring"><strong>86</strong><span>/100</span></div><p>Verified transaction-reliability indicator</p><div class="score-bars"><div><span>Crop Quality</span><b>24/25</b><progress value="24" max="25"></progress></div><div><span>Quantity Verification</span><b>19/20</b><progress value="19" max="20"></progress></div><div><span>Timely Delivery</span><b>17/20</b><progress value="17" max="20"></progress></div><div><span>Sustainable Practices</span><b>14/20</b><progress value="14" max="20"></progress></div><div><span>Verified History</span><b>12/15</b><progress value="12" max="15"></progress></div></div><small class="disclaimer">Does not determine government procurement prices or statutory eligibility.</small></div>
+      </div>
+    </section>
+
+    <section id="land" class="page">
+      <div class="page-title"><div><span class="eyebrow">MODULE 01</span><h1>Find agricultural land</h1><p>Search verified farmland by area, soil, irrigation and price.</p></div><button class="primary-btn" onclick="toast('Land listing form opened for demo')">+ List My Land</button></div>
+      <div class="filterbar"><input id="landSearch" placeholder="🔎 Search location, soil or land..." oninput="renderLands()"><select><option>Any area</option><option>1–2 acres</option><option>2–5 acres</option></select><select><option>Any price</option><option>Under ₹15,000</option><option>Under ₹20,000</option></select><button class="secondary-btn" onclick="toast('More filters are available in the full API build')">Filters</button></div>
+      <div id="landList" class="listing-grid"></div>
+    </section>
+
+    <section id="soil" class="page">
+      <div class="page-title"><div><span class="eyebrow">MODULE 03</span><h1>Land Health Card</h1><p>Understand your soil and see why a crop is recommended.</p></div><span class="verified-pill">✓ Soil test demo</span></div>
+      <div class="soil-layout">
+        <div class="soil-card"><div class="soil-card-head"><div><span class="land-id">LAND-001</span><h2>Ganjam • 2.4 acres</h2></div><span class="verified-pill">✓ Verified</span></div><div class="soil-metrics"><div><b>6.7</b><small>pH</small><meter min="0" max="14" value="6.7"></meter></div><div><b>Medium</b><small>Nitrogen</small><div class="metric-line"></div></div><div><b>High</b><small>Phosphorus</small><div class="metric-line"></div></div><div><b>Medium</b><small>Potassium</small><div class="metric-line"></div></div><div><b>Medium</b><small>Moisture</small><div class="metric-line"></div></div></div><div class="soil-details"><span>🌱 Loamy soil</span><span>💧 Irrigation available</span><span>🧭 Ganjam, Odisha</span><span>📋 Source: Soil test</span></div></div>
+        <div class="recommend-panel"><div class="panel-title"><h2>What should I grow?</h2><button class="secondary-btn" onclick="getRecommendations()">Refresh</button></div><div id="recommendations"></div><div class="advice-note">ℹ Informational recommendation only. Consult a qualified agriculture professional for final cultivation decisions.</div></div>
+      </div>
+    </section>
+
+    <section id="tools" class="page">
+      <div class="page-title"><div><span class="eyebrow">MODULE 02</span><h1>Rent agricultural tools</h1><p>Find nearby machinery and book by the hour.</p></div><button class="secondary-btn" onclick="toast('Owner listing mode enabled in demo')">List Equipment</button></div>
+      <div class="filterbar"><input placeholder="🔎 Search tractor, rotavator, sprayer..." oninput="filterEquipment(this.value)"><select><option>All equipment</option><option>Tractor</option><option>Rotavator</option><option>Sprayer</option></select><select><option>Available now</option><option>All</option></select></div>
+      <div id="equipmentList" class="listing-grid"></div>
+    </section>
+
+    <section id="procurement" class="page">
+      <div class="page-title"><div><span class="eyebrow">MODULE 04</span><h1>Government procurement</h1><p>Demo procurement, digital token and QR verification.</p></div><span class="demo-badge">DEMO PROCUREMENT ENVIRONMENT</span></div>
+      <div class="procure-grid">
+        <div class="procure-card"><div class="procure-icon">🏛️</div><span class="status-chip">VERIFIED</span><h2>Paddy • 1,850 kg</h2><p>Grade A • Ganjam Centre #04</p><div class="procure-row"><span>Procurement</span><b>Verified</b></div><div class="procure-row"><span>Payment</span><b class="success">Processed</b></div><button class="primary-btn" onclick="generateToken()">Generate / View Digital Token</button></div>
+        <div class="token-card" id="tokenCard"><div class="qr-placeholder" id="qrBox">QR</div><span class="land-id">SECURE VERIFICATION REFERENCE</span><h2 id="tokenId">ACT-2026-08-004829</h2><p>Scan to verify the procurement record without exposing sensitive identity data.</p><button class="secondary-btn" onclick="verifyToken()">✓ Verify Token</button><div id="verifyResult" class="verify-result"></div></div>
+      </div>
+      <div class="trace-panel"><div class="panel-title"><h2>Traceability</h2><span class="status-chip">8 EVENTS</span></div><div class="trace-line"><span>✓</span><b>Farmer registered</b><span>→</span><span>✓</span><b>Land registered</b><span>→</span><span>✓</span><b>Soil verified</b><span>→</span><span>✓</span><b>Crop recommended</b><span>→</span><span>✓</span><b>Harvest recorded</b><span>→</span><span>✓</span><b>Procurement</b><span>→</span><span>✓</span><b>Token</b><span>→</span><span>✓</span><b>Payment</b></div></div>
+    </section>
+
+    <section id="history" class="page">
+      <div class="page-title"><div><span class="eyebrow">MY AGRICULTURE JOURNEY</span><h1>History & traceability</h1><p>Your verified agricultural activity in one timeline.</p></div><button class="secondary-btn" onclick="toast('History export prepared in demo mode')">Export History</button></div>
+      <div class="history-layout"><div class="panel"><div class="panel-title"><h2>Verified journey</h2><span class="status-chip">8 EVENTS</span></div><div class="history-timeline">
+      <div><span>✓</span><div><b>Farmer identity verified</b><small>DEMO-FARMER-001 • 13 Aug 2026</small></div></div><div><span>✓</span><div><b>Land registered</b><small>LAND-001 • 2.4 acres • Ganjam</small></div></div><div><span>✓</span><div><b>Land Health Card verified</b><small>pH 6.7 • Loamy • Soil test</small></div></div><div><span>✓</span><div><b>Paddy recommended</b><small>94% compatibility • explainable rule engine</small></div></div><div><span>✓</span><div><b>Tractor booked</b><small>EQ-001 • 4 hours</small></div></div><div><span>✓</span><div><b>Harvest recorded</b><small>Paddy • 1,850 kg</small></div></div><div><span>✓</span><div><b>Procurement verified</b><small>Ganjam Centre #04 • Grade A</small></div></div><div><span>✓</span><div><b>Digital token + payment</b><small>ACT-2026-08-004829 • Payment processed</small></div></div>
+      </div></div><div class="panel profile-summary"><div class="avatar">RK</div><h2>Ramesh Kumar</h2><span class="land-id">AGR-F-10284</span><div class="summary-row"><span>Land</span><b>2.4 acres</b></div><div class="summary-row"><span>Current crop</span><b>Paddy</b></div><div class="summary-row"><span>Verified tokens</span><b>4</b></div><div class="summary-row"><span>Payment status</span><b class="success">Processed</b></div><button class="primary-btn" onclick="showPage('dashboard')">Back to Dashboard</button></div></div>
+    </section>
+
+    <section id="cultivation" class="page">
+      <div class="page-title"><div><span class="eyebrow">CULTIVATION</span><h1>Record cultivation & harvest</h1><p>Keep a simple digital record that can connect to procurement.</p></div><button class="primary-btn" onclick="recordHarvest()">+ Record Harvest</button></div>
+      <div class="cultivation-grid"><div class="panel"><div class="panel-title"><h2>Current cultivation</h2><span class="status-chip">ACTIVE</span></div><div class="crop-hero"><span>🌾</span><div><b>Paddy</b><small>LAND-001 • Kharif</small></div></div><div class="cultivation-steps"><div class="complete"><i>✓</i><span>Sowing</span><small>15 Jun 2026</small></div><div class="complete"><i>✓</i><span>Crop growth</span><small>Healthy</small></div><div class="current"><i>3</i><span>Harvest</span><small>Ready to record</small></div><div><i>4</i><span>Procurement</span><small>After harvest</small></div></div></div><div class="panel"><h2>Harvest estimate</h2><div class="big-number">1,850 <small>kg</small></div><p class="muted">Demo quantity prepared for the procurement workflow.</p><button class="secondary-btn" onclick="showPage('procurement')">Continue to Procurement →</button></div></div>
+    </section>
+
+    <section id="notifications" class="page">
+      <div class="page-title"><div><span class="eyebrow">NOTIFICATIONS</span><h1>Updates for you</h1><p>Important activity without unnecessary complexity.</p></div><button class="secondary-btn" onclick="toast('All notifications marked as read')">Mark all read</button></div>
+      <div class="notification-list"><article class="notification unread"><span>🎫</span><div><b>Procurement token verified</b><p>ACT-2026-08-004829 is ready for verification.</p><small>2 minutes ago</small></div></article><article class="notification"><span>🚜</span><div><b>Tractor booking confirmed</b><p>Mahindra Tractor • 4 hours • Ganjam.</p><small>Today</small></div></article><article class="notification"><span>🧪</span><div><b>Soil card verified</b><p>Your Land Health Card is ready.</p><small>Yesterday</small></div></article><article class="notification"><span>💰</span><div><b>Payment processed</b><p>Your demo procurement payment has been marked processed.</p><small>Yesterday</small></div></article></div>
+    </section>
+
+    <section id="officer" class="page">
+      <div class="page-title"><div><span class="eyebrow">PROCUREMENT OFFICER</span><h1>Procurement command centre</h1><p>Verify quantity, quality and transaction status.</p></div><span class="demo-badge">DEMO ROLE</span></div>
+      <div class="stats-grid officer-stats"><div class="stat-card"><span>👨‍🌾</span><b>1,284</b><small>Farmers</small></div><div class="stat-card"><span>🌾</span><b>48.2 t</b><small>Today's quantity</small></div><div class="stat-card"><span>🎫</span><b>316</b><small>Tokens generated</small></div><div class="stat-card"><span>💰</span><b>₹28.4L</b><small>Processed value</small></div></div>
+      <div class="panel"><div class="panel-title"><h2>Recent procurement</h2><button class="secondary-btn" onclick="toast('Procurement CSV export prepared')">Export</button></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Farmer</th><th>Crop</th><th>Quantity</th><th>Grade</th><th>Status</th></tr></thead><tbody><tr><td>PR-004829</td><td>Ramesh Kumar</td><td>Paddy</td><td>1,850 kg</td><td>A</td><td><span class="status-chip">VERIFIED</span></td></tr><tr><td>PR-004828</td><td>Sita Naik</td><td>Maize</td><td>1,240 kg</td><td>A</td><td><span class="status-chip">VERIFIED</span></td></tr><tr><td>PR-004827</td><td>Manoj Behera</td><td>Groundnut</td><td>840 kg</td><td>B</td><td><span class="demo-badge">PENDING</span></td></tr></tbody></table></div></div>
+    </section>
+
+    <section id="admin" class="page">
+      <div class="page-title"><div><span class="eyebrow">ADMIN</span><h1>Platform operations</h1><p>Monitor users, verification, partners, rules and audit events.</p></div><span class="demo-badge">DEMO ROLE</span></div>
+      <div class="admin-grid"><article><b>12,842</b><span>Farmers</span></article><article><b>3,482</b><span>Land listings</span></article><article><b>1,206</b><span>Equipment</span></article><article><b>428</b><span>Digital Mitras</span></article><article><b>74</b><span>Pending verifications</span></article><article><b>18,941</b><span>Audit events</span></article></div>
+      <div class="admin-actions"><button onclick="toast('Recommendation rules editor opened')">🌱 Recommendation Rules</button><button onclick="toast('Mitra approvals opened')">👨‍🌾 Mitra Approvals</button><button onclick="toast('Partner registry opened')">🤝 Partners</button><button onclick="toast('Audit log opened')">🛡️ Audit Logs</button></div>
+    </section>
+
+    <section id="mitra" class="page">
+      <div class="page-title"><div><span class="eyebrow">ASSISTED ACCESS</span><h1>Digital Mitra network</h1><p>Human assistance for farmers who need help entering the digital ecosystem.</p></div><button class="primary-btn" onclick="toast('Demo Mitra application submitted')">Become a Digital Mitra</button></div>
+      <div class="mitra-grid"><article><span>👨‍🌾</span><h2>Farmer onboarding</h2><p>Assist with farmer registration, profiles, land information and service discovery.</p></article><article><span>🧪</span><h2>Verification support</h2><p>Help submit soil cards and documents for authorized verification.</p></article><article><span>🏢</span><h2>Community network</h2><p>Designed for KVK, agriculture officers, CSC, NGOs, SHGs, FPOs and cooperatives.</p></article></div>
+      <div class="partner-note"><b>Partnership-ready, not falsely partnered.</b><p>AgriConnect provides integration points for rural service networks. It does not claim an official partnership unless one is actually established.</p></div>
+    </section>
+
+    <section id="how" class="page">
+      <div class="center-title"><span class="eyebrow">HOW IT WORKS</span><h1>One connected journey</h1><p>Every action creates the next useful step.</p></div>
+      <div class="flow-grid">
+        <div>🪪<b>Identity</b><small>Farmer ID / OTP / authorized identity flow</small></div><div>🏞️<b>Land</b><small>Discover or list agricultural land</small></div><div>🧪<b>Soil</b><small>Land Health Card</small></div><div>🌱<b>Crop</b><small>Explainable recommendation</small></div><div>🚜<b>Tools</b><small>Rent equipment</small></div><div>🌾<b>Harvest</b><small>Record cultivation</small></div><div>🏛️<b>Procurement</b><small>Verify quantity and quality</small></div><div>🎫<b>Token</b><small>Secure QR reference</small></div><div>💰<b>Payment</b><small>Track status</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">🌾 <b>AgriConnect</b><span>Team Zenix</span></div><div>Built for SIH demonstration • DEMO data only</div><div>Privacy by design • WCAG-minded • Integration-ready</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

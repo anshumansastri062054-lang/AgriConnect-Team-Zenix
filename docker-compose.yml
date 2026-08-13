@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: agriconnect-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agri
+      POSTGRES_PASSWORD: agri
+      POSTGRES_DB: agriconnect
+    ports:
+      - "5432:5432"
+    volumes:
+      - agriconnect_pg:/var/lib/postgresql/data
+
+volumes:
+  agriconnect_pg:

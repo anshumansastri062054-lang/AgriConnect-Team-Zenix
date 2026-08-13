@@ -1,0 +1,206 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus { ACTIVE PENDING SUSPENDED }
+enum VerificationStatus { PENDING VERIFIED REJECTED REVOKED }
+enum RentalStatus { PENDING APPROVED REJECTED CANCELLED ACTIVE COMPLETED }
+enum BookingStatus { PENDING CONFIRMED CANCELLED COMPLETED }
+enum ProcurementStatus { PENDING VERIFIED ACCEPTED REJECTED }
+enum PaymentStatus { PENDING PROCESSING PROCESSED FAILED }
+enum TokenStatus { PENDING VERIFIED REVOKED INVALID }
+
+model User {
+  id                 String   @id @default(cuid())
+  farmerId           String?  @unique
+  name               String
+  mobile             String?  @unique
+  status             UserStatus @default(ACTIVE)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  roles              UserRole[]
+  farmerProfile      FarmerProfile?
+  identityVerifications IdentityVerification[]
+  auditLogs          AuditLog[]
+  ownedLands         Land[] @relation("LandOwner")
+  ownedEquipment     Equipment[] @relation("EquipmentOwner")
+}
+
+model Role {
+  id    String @id @default(cuid())
+  name  String @unique
+  users UserRole[]
+}
+
+model UserRole {
+  userId String
+  roleId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  @@id([userId, roleId])
+}
+
+model FarmerProfile {
+  id String @id @default(cuid())
+  userId String @unique
+  location String?
+  easyMode Boolean @default(false)
+  voiceLanguage String @default("or-IN")
+  reliabilityScore Int @default(0)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lands Land[]
+  cultivations Cultivation[]
+  procurements Procurement[]
+  tokens CropToken[]
+  payments Payment[]
+}
+
+model IdentityVerification {
+  id String @id @default(cuid())
+  userId String
+  provider String
+  verificationType String
+  status VerificationStatus @default(PENDING)
+  referenceId String?
+  maskedIdentifier String?
+  consentTimestamp DateTime?
+  verifiedAt DateTime?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Land {
+  id String @id @default(cuid())
+  ownerId String?
+  farmerId String?
+  title String
+  location String
+  area Float
+  price Float
+  soilType String?
+  ph Float?
+  irrigation String?
+  verified Boolean @default(false)
+  availability Boolean @default(true)
+  owner User? @relation("LandOwner", fields: [ownerId], references: [id])
+  farmer FarmerProfile? @relation(fields: [farmerId], references: [id])
+  soilProfiles SoilProfile[]
+  rentalRequests RentalRequest[]
+}
+
+model RentalRequest {
+  id String @id @default(cuid())
+  landId String
+  farmerId String
+  status RentalStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  land Land @relation(fields: [landId], references: [id], onDelete: Cascade)
+}
+
+model SoilProfile {
+  id String @id @default(cuid())
+  landId String
+  ph Float?
+  nitrogen String?
+  phosphorus String?
+  potassium String?
+  moisture Float?
+  texture String?
+  source String?
+  verificationStatus VerificationStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  land Land @relation(fields: [landId], references: [id], onDelete: Cascade)
+}
+
+model Crop {
+  id String @id @default(cuid())
+  name String @unique
+  season String[]
+}
+
+model Equipment {
+  id String @id @default(cuid())
+  ownerId String?
+  name String
+  type String
+  pricePerHour Float
+  location String
+  available Boolean @default(true)
+  bookings EquipmentBooking[]
+  owner User? @relation("EquipmentOwner", fields: [ownerId], references: [id])
+}
+
+model EquipmentBooking {
+  id String @id @default(cuid())
+  equipmentId String
+  farmerId String
+  startAt DateTime
+  endAt DateTime
+  status BookingStatus @default(PENDING)
+  equipment Equipment @relation(fields: [equipmentId], references: [id], onDelete: Cascade)
+}
+
+model Cultivation {
+  id String @id @default(cuid())
+  farmerId String
+  landId String?
+  crop String
+  sowingDate DateTime?
+  harvestDate DateTime?
+  quantityKg Float?
+  farmer FarmerProfile @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+}
+
+model Procurement {
+  id String @id @default(cuid())
+  farmerId String
+  crop String
+  quantityKg Float
+  grade String
+  centre String
+  status ProcurementStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  farmer FarmerProfile @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  token CropToken?
+  payment Payment?
+}
+
+model CropToken {
+  id String @id @default(cuid())
+  tokenId String @unique
+  farmerId String
+  procurementId String @unique
+  verificationHash String
+  status TokenStatus @default(VERIFIED)
+  createdAt DateTime @default(now())
+  farmer FarmerProfile @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  procurement Procurement @relation(fields: [procurementId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id String @id @default(cuid())
+  farmerId String
+  procurementId String @unique
+  amount Float
+  status PaymentStatus @default(PENDING)
+  processedAt DateTime?
+  farmer FarmerProfile @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  procurement Procurement @relation(fields: [procurementId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id String @id @default(cuid())
+  userId String?
+  action String
+  entity String
+  entityId String?
+  metadata Json?
+  createdAt DateTime @default(now())
+  user User? @relation(fields: [userId], references: [id])
+}
